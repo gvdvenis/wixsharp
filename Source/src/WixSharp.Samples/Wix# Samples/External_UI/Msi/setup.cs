@@ -1,6 +1,7 @@
 //css_ref ..\..\..\WixSharp.dll;
 //css_ref ..\..\..\Wix_bin\SDK\Microsoft.Deployment.WindowsInstaller.dll;
 using System;
+using System.Windows.Forms;
 using WixSharp;
 
 class Script
@@ -11,7 +12,7 @@ class Script
         var binaries = new Feature("Binaries");
 
         var project =
-            new Project("MyProduct",
+            new ManagedProject("MyProduct",
 
                 new LaunchCondition("CUSTOM_UI=\"true\" OR REMOVE=\"ALL\"", "Please run setup.exe instead."),
 
@@ -22,6 +23,11 @@ class Script
 
         project.UI = WUI.WixUI_Common;
         project.GUID = new Guid("6f330b47-2577-43ad-9095-1861ba25889b");
+
+        project.AfterInstall += (e)=>
+        {
+            System.Windows.Forms.MessageBox.Show("project.AfterInstall");
+        };
 
         Compiler.BuildMsi(project);
     }
