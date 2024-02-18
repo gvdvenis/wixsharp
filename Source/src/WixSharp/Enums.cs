@@ -401,7 +401,6 @@ namespace WixSharp
     {
         // mo WiX4 documentation is available for the values
         aspnet,
-
         core,
         desktop
     }
@@ -766,7 +765,13 @@ namespace WixSharp
         /// <summary>
         /// The version type
         /// </summary>
-        version
+        version,
+
+        /// <summary>
+        /// Wether the variable should be considered as a formatted string. Formatted 
+        /// strings are processed and can contain other variables that will be resolved.
+        /// </summary>
+        formatted
     }
 
     /// <summary>
