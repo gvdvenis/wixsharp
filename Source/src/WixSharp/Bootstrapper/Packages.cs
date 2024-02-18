@@ -207,6 +207,14 @@ namespace WixSharp.Bootstrapper
         }
 
         /// <summary>
+        /// Indicates the package is a WiX bundle. The default is "no".
+        /// If "yes", then the default Protocol value is "burn".
+        /// The engine will prepend command line arguments such as "-norestart" for all operations,
+        /// as well as avoid running this bundle as a related bundle.
+        /// </summary>
+        [Xml] public bool Bundle;
+
+        /// <summary>
         /// The command-line arguments provided to the ExePackage during install. If this attribute
         /// is absent the executable will be launched with no command-line arguments
         /// </summary>
